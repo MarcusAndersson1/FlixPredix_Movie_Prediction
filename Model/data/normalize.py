@@ -5,6 +5,8 @@ import json
 
 df = pd.read_csv('tmdb_5000_movies.csv', sep=',')
 
+df = df.drop('homepage', 1).drop('id', 1).drop('keywords', 1).drop('overview', 1).drop('release_date', 1).drop('status', 1).drop('tagline', 1).drop('title', 1).drop('original_title', 1)
+
 genres = df.loc[:, 'genres']
 genres_normalized = []
 
