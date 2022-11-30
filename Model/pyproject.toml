@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "model"
+version = "0.1.0"
+description = ""
+authors = [""]
+readme = "README.md"
+packages = [
+    { include = "server" }
+]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+fastapi = "^0.88.0"
+uvicorn = {extras = ["standard"], version = "^0.20.0"}
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
