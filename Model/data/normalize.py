@@ -125,9 +125,6 @@ df = normalize_production_countries(df)
 df = remove_nulls(df)
 
 
-df['runtime'] = df['runtime'].apply(lambda x : x - (x % 10))
-
-
 logger.debug("Saving transformations to 'normalized.csv'")
 
 # Create new modified CSV file for training usage
