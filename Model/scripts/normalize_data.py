@@ -111,7 +111,36 @@ def normalize_popularity(df):
 
     normalized_popularity = (df['popularity'] - df['popularity'].min()) / (df['popularity'].max() - df['popularity'].min())
 
-    df['popularity'] = normalized_popularity
+    df['popularity_normalized'] = normalized_popularity
+
+    col = df.pop('popularity_normalized')
+    df.insert(df.columns.get_loc('popularity') + 1, 'popularity_normalized', col)
+
+    return df
+
+
+def normalize_revenue(df):
+    logger.info("Normalizing column: 'revenue'")
+
+    normalized_revenue = (df['revenue'] - df['revenue'].min()) / (df['revenue'].max() - df['revenue'].min())
+
+    df['revenue_normalized'] = normalized_revenue
+
+    col = df.pop('revenue_normalized')
+    df.insert(df.columns.get_loc('revenue') + 1, 'revenue_normalized', col)
+
+    return df
+
+
+def normalize_budget(df):
+    logger.info("Normalizing column: 'budget'")
+
+    normalized_budget = (df['budget'] - df['budget'].min()) / (df['budget'].max() - df['budget'].min())
+
+    df['budget_normalized'] = normalized_budget
+
+    col = df.pop('budget_normalized')
+    df.insert(df.columns.get_loc('budget') + 1, 'budget_normalized', col)
 
     return df
 
@@ -133,6 +162,8 @@ df = drop_unused_columns(df)
 df = transform_genres(df)
 df = transform_production_countries(df)
 df = normalize_popularity(df)
+df = normalize_revenue(df)
+df = normalize_budget(df)
 df = remove_nulls(df)
 
 
