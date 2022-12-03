@@ -147,10 +147,11 @@ def normalize_budget(df):
 
 # Remove movies with 0 or null runtime
 def remove_nulls(df):
-    logger.info("Dropping null columns: 'runtime', 'budget'")
+    logger.info("Dropping null columns: 'runtime', 'budget', 'vote_count'")
 
     df = df.loc[(df[['runtime', 'budget']] != 0).all(axis=1)]
     df = df[df['runtime'].notna()]
+    df = df.loc[(df[['vote_count']] >= 10).all(axis=1)]
 
     return df
 
