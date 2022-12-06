@@ -14,6 +14,10 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  background-image: url('@/assets/image.webp');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  
 }
 
 nav {
@@ -22,7 +26,7 @@ nav {
 
 nav a {
   font-weight: bold;
-  color: #2c3e50;
+  color: #ffffff;
 }
 
 nav a.router-link-exact-active {
