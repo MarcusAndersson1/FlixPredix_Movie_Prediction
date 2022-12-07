@@ -13,7 +13,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #831212;
   background-image: url('@/assets/image.webp');
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -31,5 +31,10 @@ nav a {
 
 nav a.router-link-exact-active {
   color: #42b983;
+}
+@font-face {
+  font-family: "aliens_and_cows";
+  src: local("aliens_and_cows"),
+   url(./assets/fonts/aliens_and_cows_trial.ttf) format("truetype");
 }
 </style>
