@@ -14,10 +14,7 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #831212;
-  background-image: url('@/assets/image.webp');
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  
+  background-color: #831212;
 }
 
 nav {
