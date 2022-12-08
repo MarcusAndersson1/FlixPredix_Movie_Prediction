@@ -6,7 +6,8 @@
       <h1 class="name">FLIXPREDIX</h1>
     </div>
     
-    <v-btn class="icon" elevation="9" icon x-large>NAJS</v-btn>
+    <v-btn elevation="9" icon x-large prepend-icon="mdi-vuetify">NAJS</v-btn>
+   <v-btn stacked elevation="15" prepend-icon="mdi-vuetify" variant="tonal" icon></v-btn>
 
 
     <a href="/home">
