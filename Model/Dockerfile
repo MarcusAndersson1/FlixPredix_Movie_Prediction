@@ -32,6 +32,8 @@ RUN poetry install --no-dev --no-root
 
 ###########################################################
 FROM base as production
+
 COPY --from=builder $PYSETUP_PATH $PYSETUP_PATH
 COPY ./server /server/
+
 CMD ["uvicorn", "server:app", "--host", "0.0.0.0", "--port", "80"]
