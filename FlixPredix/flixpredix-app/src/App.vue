@@ -1,7 +1,7 @@
 <template>
   <nav>
     <router-link to="/frontPage">FrontPage</router-link> |
-    <router-link to="/">Home</router-link> |
+    <router-link to="/home">Home</router-link> |
     <router-link to="/about">About</router-link> |
     
   </nav>
@@ -34,5 +34,8 @@ nav a.router-link-exact-active {
   font-family: "aliens_and_cows";
   src: local("aliens_and_cows"),
    url(./assets/fonts/aliens_and_cows_trial.ttf) format("truetype");
+  font-family: "StarWars";
+  src: local("STJEDISE"),
+   url(./assets/fonts/STJEDISE.TTF) format("truetype");
 }
 </style>

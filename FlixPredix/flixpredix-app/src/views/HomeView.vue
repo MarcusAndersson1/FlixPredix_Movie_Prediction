@@ -1,11 +1,11 @@
 <template>
 <body>
-    <h1>Select the features for your prediction:</h1>
+    <h1 id="head">Features, pick you must:</h1>
     <br>
     <v-container class="home">
         <v-row align-h="start">
             <v-col>
-                <BudgetSlide />
+                <BudgetSlide />                
                 <br>
                 <RegionSelect />
             </v-col>
@@ -39,6 +39,13 @@ export default {
 
 <style>
 body {
-    background-color: #3A1414;
+    background-color: #681717;
+}
+#head {
+  font-family: "StarWars";
+  font-size: 50px;
+  margin-top: 50px;
+  margin-bottom: 0px;
+  color: white
 }
 </style>

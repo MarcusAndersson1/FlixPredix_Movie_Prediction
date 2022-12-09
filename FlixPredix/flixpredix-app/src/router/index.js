@@ -4,7 +4,7 @@ import FrontPage from '../views/FrontPage.vue'
 
 const routes = [
   {
-    path: '/',
+    path: '/home',
     name: 'home',
     component: HomeView
   },

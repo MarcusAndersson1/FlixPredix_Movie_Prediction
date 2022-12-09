@@ -1,5 +1,6 @@
 <template>
-    <v-card class="mx-auto" max-width="450" max-height="250" color="#B52C2C">
+<v-hover v-slot:default="{ isHovering, props }">
+    <v-card class="mx-auto" id="reg" max-width="450" max-height="250" v-bind="props" :color="isHovering ? '#C22020' : undefined">
         <v-card-title>REGION</v-card-title>
         <v-card-text>
             <v-container>
@@ -23,19 +24,30 @@
             </v-container>
         </v-card-text>
     </v-card>
-    </template>
+</v-hover>
+</template>
+
     
       
-    <script>
-    export default {
-        data() {
-            return {
-                ex7: 'white',
-            }
-        },
-        name: 'GenreSelect',
-        props: {
-            msg: String
-        },
-    }
-    </script>
+    
+<script>
+export default {
+    data() {
+        return {
+            ex7: 'white',
+        }
+    },
+    name: 'GenreSelect',
+    props: {
+        msg: String
+    },
+}
+</script>
+<style>
+#reg {
+    color: white;
+    background-color: #861515;
+    
+}
+
+</style>

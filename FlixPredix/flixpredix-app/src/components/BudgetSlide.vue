@@ -1,26 +1,27 @@
 <template>
-<v-card class="mx-auto" max-width="400" max-height="100" color="#B52C2C">
-    <br>
-    <v-row class="mb-6" justify="space-between">
-        <v-col class="text-center">
-            <span class="text-subheading"> BUDGET: </span>
-            <span class="text-h5 font-weight-light mx-auto" v-text="budget"></span>
-            <span class="subheading font-weight-light mx-auto mr-">$</span>
+<v-hover v-slot:default="{ isHovering, props }">
+    <v-card class="mx-auto" id="bud" max-width="450" max-height="100" v-bind="props" :color="isHovering ? '#C22020' : undefined">
+        <br>
+        <v-row class="mb-6" justify="space-between">
+            <v-col class="text-center">
+                <span class="text-subheading"> BUDGET: </span>
+                <span class="text-h5 font-weight-light mx-auto" v-text="budget"></span>
+                <span class="subheading font-weight-light mx-auto mr-">$</span>
 
-            <v-slider v-model="budget" :color="color" track-color="red" min="1000" max="4000000000" :step="1000">
-                <template v-slot:prepend>
-                    <v-btn size="small" variant="text" icon="mdi-minus" :color="color" @click="decrement"></v-btn>
-                </template>
-                <template v-slot:append>
-                    <v-btn size="small" variant="text" icon="mdi-plus" :color="color" @click="increment"></v-btn>
-                </template>
-            </v-slider>
-        </v-col>
-    </v-row>
-</v-card>
+                <v-slider v-model="budget" :color="color" track-color="white" min="1000" max="4000000000" :step="1000">
+                    <template v-slot:prepend>
+                        <v-btn size="small" variant="text" icon="mdi-minus" :color="color" @click="decrement"></v-btn>
+                    </template>
+                    <template v-slot:append>
+                        <v-btn size="small" variant="text" icon="mdi-plus" :color="color" @click="increment"></v-btn>
+                    </template>
+                </v-slider>
+            </v-col>
+        </v-row>
+    </v-card>
+</v-hover>
 </template>
 
-  
 <script>
 export default {
     data: () => ({
@@ -56,7 +57,7 @@ export default {
     },
 }
 </script>
-  
+
 <style>
 @keyframes metronome-example {
     from {
@@ -72,5 +73,10 @@ export default {
     animation-name: metronome-example;
     animation-iteration-count: infinite;
     animation-direction: alternate;
+}
+
+#bud {
+    color: white;
+    background-color: #861515;
 }
 </style>
