@@ -135,7 +135,8 @@ def normalize_revenue(df):
 def normalize_budget(df):
     logger.info("Normalizing column: 'budget'")
 
-    normalized_budget = (df['budget'] - df['budget'].min()) / (df['budget'].max() - df['budget'].min())
+    # normalized_budget = (df['budget'] - df['budget'].min()) / (df['budget'].max() - df['budget'].min())
+    normalized_budget = (df['budget'] - df['budget'].mean()) / df['budget'].std()
 
     df['budget_normalized'] = normalized_budget
 
