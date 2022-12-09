@@ -1,5 +1,5 @@
 <template>
-<v-card class="mx-auto" max-width="600" max-height="200" color="#B52C2C">
+<v-card class="mx-auto" max-width="700" max-height="200" color="#B52C2C">
     <v-card-title>GENRE</v-card-title>
     <v-card-text>
         <v-container>
