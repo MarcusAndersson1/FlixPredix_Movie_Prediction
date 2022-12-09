@@ -15,7 +15,7 @@
           </v-btn>
         </v-col>
         <v-col class="playRound">
-            <v-btn size= "210" :color="color" theme="dark" icon elevation="15" @click="toggle">               
+            <v-btn size= "210" :color="color" theme="dark" icon elevation="15" @click="toggle" href="/home">               
               <v-icon size="210" :icon="isPlaying ? 'mdi-pause' : 'mdi-play'" color="#831212"></v-icon>             
             </v-btn>
           </v-col>
