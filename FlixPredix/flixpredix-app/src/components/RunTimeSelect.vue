@@ -1,0 +1,75 @@
+<template>
+<v-card class="mx-auto" max-width="400" max-height="100" color="#B52C2C">
+    <v-row class="mb-6" justify="space-between">
+        <v-col class="text-center">
+            <span class="text-subheading"> RUNTIME: </span>
+            <span class="text-h5 font-weight-light mx-auto" v-text="runtime"></span>
+            <span class="subheading font-weight-light mx-auto mr-">min</span>
+            <v-slider v-model="runtime" :color="color" :ticks="tickLabels" :max="8" step="1" show-ticks="always" tick-size="3">
+                <template v-slot:prepend>
+                    <v-btn size="small" variant="text" icon="mdi-minus" :color="color" @click="decrement"></v-btn>
+                </template>
+                <template v-slot:append>
+                    <v-btn size="small" variant="text" icon="mdi-plus" :color="color" @click="increment"></v-btn>
+                </template></v-slider>
+        </v-col>
+    </v-row>
+</v-card>
+</template>
+
+<script>
+export default {
+    
+    data: () => ({
+        runtime: 60,
+        interval: null
+    }),
+    computed: {
+        color() {
+            if (this.runtime < 60) return 'blue'
+            if (this.runtime < 90) return 'green'
+            if (this.runtime < 120) return 'yellow'
+            if (this.runtime < 150) return 'orande'
+            if (this.runtime < 180) return 'red'
+            if (this.runtime < 210) return 'red'
+            if (this.runtime < 240) return 'red'
+            if (this.runtime < 270) return 'red'
+            else return 'red'
+        },
+        animationDuration() {
+            return `${100 / this.runtime}s`
+        },
+    },
+    name: 'RunTimeSelect',
+    props: {
+        msg: String
+    },
+
+    methods: {
+        decrement() {
+            this.runtime--
+        },
+        increment() {
+            this.runtime++
+        }
+    },
+}
+</script>
+
+<style>
+@keyframes metronome-example {
+    from {
+        transform: scale(.5);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+.v-avatar--metronome {
+    animation-name: metronome-example;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+</style>

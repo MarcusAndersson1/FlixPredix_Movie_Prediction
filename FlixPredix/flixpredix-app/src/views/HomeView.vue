@@ -1,22 +1,44 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+<body>
+    <h1>Select the features for your prediction:</h1>
+    <br>
+    <v-container class="home">
+        <v-row align-h="start">
+            <v-col>
+                <BudgetSlide />
+                <br>
+                <RegionSelect />
+            </v-col>
+            <v-col>
+                <GenreSelect />
+                <br>
+                <RunTimeSelect/>
+            </v-col>
+        </v-row>
+    </v-container>
+</body>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import BudgetSlide from '@/components/BudgetSlide.vue'
+import GenreSelect from '@/components/GenreSelect.vue'
+import RegionSelect from '@/components/RegionSelect.vue'
+import RunTimeSelect from '@/components/RunTimeSelect.vue'
 
 export default {
-  name: 'HomeView',
-  components: {
-    HelloWorld
-  }
+    name: 'HomeView',
+    components: {
+        BudgetSlide,
+        GenreSelect,
+        RegionSelect,
+        RunTimeSelect
+    },
 }
 </script>
 
 <style>
-
+body {
+    background-color: #3A1414;
+}
 </style>
