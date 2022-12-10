@@ -11,7 +11,9 @@ ENV PYTHONUNBUFFERED=1 \
     POETRY_VIRTUALENVS_IN_PROJECT=true \
     POETRY_NO_INTERACTION=1 \
     PYSETUP_PATH="/opt/pysetup" \
-    VENV_PATH="/opt/pysetup/.venv" 
+    VENV_PATH="/opt/pysetup/.venv" \
+    FLIXPREDIX_HOME="/flixpredix" \
+    FLIXPREDIX_MREG="/flixpredix/models"
 
 ENV PATH="$POETRY_HOME/bin:$VENV_PATH/bin:$PATH"
 
@@ -20,8 +22,7 @@ FROM base as builder
 
 RUN apt-get update \
     && apt-get install --no-install-recommends -y \
-    curl \
-    build-essential
+    curl
 
 RUN curl -sSL https://install.python-poetry.org | python
 
@@ -34,7 +35,9 @@ RUN poetry install --no-dev --no-root
 FROM base as production
 
 COPY --from=builder $PYSETUP_PATH $PYSETUP_PATH
-COPY ./server /server/
-COPY ./models /server/models
+COPY ./server $FLIXPREDIX_HOME/server/
+COPY ./models $FLIXPREDIX_MREG
+
+WORKDIR $FLIXPREDIX_HOME
 
 CMD ["uvicorn", "server:app", "--host", "0.0.0.0", "--port", "80"]
