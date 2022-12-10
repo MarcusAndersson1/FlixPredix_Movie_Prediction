@@ -12,6 +12,7 @@ include = ["CHANGELOG.md"]
 python = "^3.8"
 fastapi = "^0.88.0"
 uvicorn = {extras = ["standard"], version = "^0.20.0"}
+scikit-learn = "^1.2.0"
 
 
 [build-system]

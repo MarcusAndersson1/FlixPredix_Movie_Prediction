@@ -169,12 +169,12 @@ df = normalize_budget(df)
 df = remove_nulls(df)
 
 
-logger.debug("Saving transformations to 'normalized.csv'")
+logger.debug("Saving transformations to '/data/normalized.csv'")
 
 # Create new modified CSV file for training usage
 df.to_csv('data/normalized.csv')
 
-logger.info("Saved transformations to 'normalized.csv'")
+logger.info("Saved transformations to '/data/normalized.csv'")
 
 
 # Split spoken languages into separate columns (MIGHT NOT BE USED)
