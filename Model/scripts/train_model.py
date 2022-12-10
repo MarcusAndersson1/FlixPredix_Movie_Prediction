@@ -4,6 +4,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from joblib import dump
 
+MODEL_LOCATION = "models/tmp/model.joblib"
 
 logging.basicConfig(level=logging.INFO) # switch to logging.DEBUG for more info
 logger = logging.getLogger('train_model')
@@ -30,8 +31,8 @@ logger.info('Training linear regression model')
 model = LinearRegression()
 model.fit(X_train, y_train)
 
-logger.info("Saving model to '/models/model.joblib'")
+logger.info("Saving model to '{}'".format(MODEL_LOCATION))
 
-dump(model, 'models/model.joblib')
+dump(model, MODEL_LOCATION)
 
-logger.info("Saved model to '/models/model.joblib'")
+logger.info("Saved model to '{}'".format(MODEL_LOCATION))

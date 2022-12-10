@@ -1,4 +1,5 @@
 /Model/data/normalized.csv
 /Model/data/predictions.csv
+/Model/models/tmp/
 dist/
 __pycache__/

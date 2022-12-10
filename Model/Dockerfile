@@ -35,5 +35,6 @@ FROM base as production
 
 COPY --from=builder $PYSETUP_PATH $PYSETUP_PATH
 COPY ./server /server/
+COPY ./models /server/models
 
 CMD ["uvicorn", "server:app", "--host", "0.0.0.0", "--port", "80"]

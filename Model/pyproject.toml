@@ -6,7 +6,6 @@ authors = ["Example Author <example.author@example.com>"]
 packages = [
     { include = "server" }
 ]
-include = ["CHANGELOG.md"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
