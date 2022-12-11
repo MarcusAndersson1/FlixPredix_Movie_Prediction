@@ -2,6 +2,7 @@ from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 from enum import Enum
 from typing import Set
+from .. import model
 
 
 __all__ = [
@@ -50,10 +51,24 @@ class PredictionData(BaseModel):
     genres: Set[Genre]
     regions: Set[Region]
 
+class PredictionResponse(BaseModel):
+    score: float
 
-@router.post('/predict')
-def predict(prediction_data: PredictionData):
-    raise HTTPException(status_code=501, detail='Not implemented')
+
+@router.post('/predict', response_model=PredictionResponse)
+def predict(data: PredictionData):
+    prediction_data = model.PredictionData(
+        data.budget,
+        data.runtime,
+        data.genres,
+        data.regions
+    )
+
+    prediction = model.predict(prediction_data)
+
+    return {
+        'score': prediction
+    }
 
 
 def get_router():

@@ -14,7 +14,7 @@ logger.info("Loading data from '/data/normalized.csv'")
 
 df = pd.read_csv('data/normalized.csv', sep=',')
 
-X = df[['budget_normalized', 'revenue_normalized', 'runtime', 
+X = df[['budget', 'runtime', 
         'genres_action', 'genres_adventure','genres_animation',
         'genres_comedy','genres_crime','genres_documentary',
         'genres_drama','genres_family','genres_fantasy',
