@@ -28,7 +28,6 @@
         <v-col></v-col>
       </v-row>
       
-      <div class="hidden"><img src="@/assets/flixpredix_spotlights.png" alt=""></div>
     </v-container>
 
       <div class="HELP"></div>

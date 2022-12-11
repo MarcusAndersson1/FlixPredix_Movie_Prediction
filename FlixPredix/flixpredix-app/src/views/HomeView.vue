@@ -1,5 +1,6 @@
 <template>
 <body>
+    <br/>
     <h1 id="head">Features, pick you must:</h1>
     <br>
     <v-container class="home">
@@ -16,6 +17,7 @@
             </v-col>
         </v-row>
     </v-container>
+    <div class="HELP"></div>
 </body>
 </template>
 
@@ -39,7 +41,10 @@ export default {
 
 <style>
 body {
-    background-color: #681717;
+    background-image: url('@/assets/flixpredix_gradient.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    margin-top: 10px;
 }
 #head {
   font-family: "StarWars";
@@ -47,5 +52,14 @@ body {
   margin-top: 50px;
   margin-bottom: 0px;
   color: white
+}
+.HELP {
+  margin: 400px 650px;
+  height:0;
+  width:0;
+  border-top: 80px solid transparent;
+  border-right: 100px solid transparent;
+  border-bottom: 80px solid transparent;
+  border-left: 150px solid transparent;
 }
 </style>

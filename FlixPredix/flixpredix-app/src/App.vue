@@ -19,7 +19,7 @@
 }
 
 nav {
-  padding: 30px;
+  padding-top: 10px;
 }
 
 nav a {
@@ -28,12 +28,14 @@ nav a {
 }
 
 nav a.router-link-exact-active {
-  color: #42b983;
+  color: #ff2e2e;
 }
 @font-face {
   font-family: "aliens_and_cows";
   src: local("aliens_and_cows"),
    url(./assets/fonts/aliens_and_cows_trial.ttf) format("truetype");
+}
+@font-face {
   font-family: "StarWars";
   src: local("STJEDISE"),
    url(./assets/fonts/STJEDISE.TTF) format("truetype");
