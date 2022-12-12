@@ -1,7 +1,7 @@
 <template>
 <v-hover v-slot:default="{ isHovering, props }">
     <v-card class="mx-auto" id="reg" max-width="450" max-height="250" v-bind="props" :color="isHovering ? '#C22020' : undefined">
-        <v-card-title>REGION</v-card-title>
+        <v-card-title>PRODUCTION REGION</v-card-title>
         <v-card-text>
             <v-container>
                 <v-row>
