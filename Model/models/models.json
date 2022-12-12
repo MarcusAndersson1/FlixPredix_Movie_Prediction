@@ -1,0 +1,14 @@
+{
+    "available": [
+        {
+            "name": "model-v1",
+            "version": 1,
+            "createdAt": 1670680824
+        },
+        {
+            "name": "model-v2",
+            "version": 2,
+            "createdAt": 1670769070
+        }
+    ]
+}

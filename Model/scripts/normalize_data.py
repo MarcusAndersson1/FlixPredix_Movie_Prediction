@@ -135,7 +135,8 @@ def normalize_revenue(df):
 def normalize_budget(df):
     logger.info("Normalizing column: 'budget'")
 
-    normalized_budget = (df['budget'] - df['budget'].min()) / (df['budget'].max() - df['budget'].min())
+    # normalized_budget = (df['budget'] - df['budget'].min()) / (df['budget'].max() - df['budget'].min())
+    normalized_budget = (df['budget'] - df['budget'].mean()) / df['budget'].std()
 
     df['budget_normalized'] = normalized_budget
 
@@ -168,12 +169,12 @@ df = normalize_budget(df)
 df = remove_nulls(df)
 
 
-logger.debug("Saving transformations to 'normalized.csv'")
+logger.debug("Saving transformations to '/data/normalized.csv'")
 
 # Create new modified CSV file for training usage
 df.to_csv('data/normalized.csv')
 
-logger.info("Saved transformations to 'normalized.csv'")
+logger.info("Saved transformations to '/data/normalized.csv'")
 
 
 # Split spoken languages into separate columns (MIGHT NOT BE USED)

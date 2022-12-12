@@ -1,13 +1,14 @@
 import logging
 import pandas as pd  
+import numpy as np  
+import matplotlib.pyplot as plt  
 from sklearn.model_selection import train_test_split 
-from sklearn.linear_model import LinearRegression
-from joblib import dump
+from joblib import load
 
 MODEL_LOCATION = "models/tmp/model.joblib"
 
 logging.basicConfig(level=logging.INFO) # switch to logging.DEBUG for more info
-logger = logging.getLogger('train_model')
+logger = logging.getLogger('test_model')
 
 logger.info("Loading data from '/data/normalized.csv'")
 
@@ -26,13 +27,27 @@ y = df['vote_average'].values.reshape(-1,1)
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
 
-logger.info('Training linear regression model')
+logger.info("Loading model from '{}'".format(MODEL_LOCATION))
 
-model = LinearRegression()
-model.fit(X_train, y_train)
+model = load(MODEL_LOCATION)
 
-logger.info("Saving model to '{}'".format(MODEL_LOCATION))
+logger.info("Loaded model from '{}'".format(MODEL_LOCATION))
+logger.info('Creating prediction set')
 
-dump(model, MODEL_LOCATION)
+y_pred = model.predict(X_test)
 
-logger.info("Saved model to '{}'".format(MODEL_LOCATION))
+predictions = pd.DataFrame({'Actual': y_test.flatten(), 'Predicted': y_pred.flatten()})
+
+logger.info("Saving predictions to '/data/predictions.csv'")
+
+predictions.to_csv('data/predictions.csv')
+
+logger.info("Saved predictions to '/data/predictions.csv'")
+
+entries = np.arange(0, len(predictions), 1)
+
+plt.plot(entries, y_test.flatten(), entries, y_pred.flatten())
+plt.xlabel('Entries')
+plt.ylabel('Actual vs Predicted')
+plt.legend(['Actual', 'Predicted'])
+plt.show()
