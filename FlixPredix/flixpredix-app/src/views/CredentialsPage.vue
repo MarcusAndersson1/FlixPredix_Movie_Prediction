@@ -61,7 +61,7 @@
     right: 0;
     top: 0;
     bottom: 60%;
-    background-image: linear-gradient(top, rgba(0, 0, 0, 1) 0%, transparent 100%);
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, transparent 100%);
     pointer-events: none;
 }
 
