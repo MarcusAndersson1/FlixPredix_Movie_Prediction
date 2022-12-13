@@ -6,22 +6,57 @@
             <v-col align-h="center">
                 <div id="titles">
                     <div id="titlecontent">
+                        <audio src="https://s.cdpn.io/1202/Star_Wars_original_opening_crawl_1977.mp3"></audio>
                         <h1 class="cred">FlixPredix</h1>
 						<br>
                         <span class="mx-auto"> Thank you for using FlixPredix, special thanks to our Team:
                             <br>
                             <br>
-                            Carl Andreasson
+                            Carl Skywalker
                             <br>
-                            Marcus Andersson
+                            Marc Vader
                             <br>
-                            Felix Mertala
+                            Felix Fett
                             <br>
-                            Adam Frison
+                            Adam Organa
                             <br>
-                            Edvin Danielsson
+                            Ed van Kenobi
                             <br>
-                            Mislav Milicevic
+                            Mislav Calrissian
+                            <br>
+                            <br>
+                            Big Thanks to our colleagues in the SEM program as well as the teachers and TAs
+                            that has helped us in making this possible.
+                            <br>
+                            Lastly we want to thank Gothenburg University.
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <h1 class="cred2">FlixPredix</h1>
                         </span>
                     </div>
                 </div>
@@ -32,7 +67,8 @@
 </body>
 </template>
 <script>
-
+    var audio = new Audio('https://s.cdpn.io/1202/Star_Wars_original_opening_crawl_1977.mp3');
+    audio.play();
 </script>
 <style>
 .cred {
@@ -40,7 +76,11 @@
     font-size: 100px;
     text-align: center;
 }
-
+.cred2 {
+    font-family: "StWs";
+    font-size: 145px;
+    text-align: center;
+}
 #titles {
     position: absolute;
     width: 18em;
@@ -70,7 +110,7 @@
 #titlecontent {
     position: absolute;
     top: 100%;
-    animation: scroll 100s linear 4s infinite;
+    animation: scroll 100s linear 7s infinite;
 }
 
 @keyframes scroll {
