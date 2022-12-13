@@ -1,5 +1,5 @@
 <script>
-import Header from "../components/Header.vue";
+
 import File from "../components/FileUpload.vue";
 import axios from "axios"
 
@@ -10,7 +10,6 @@ function saveToDb(data) {
 export default {
   methods:{
     async getDbRows(){
-    console.log('Aaaa')
   
         const response = await axios.get('http://localhost:4000/get')
         if (response.data){
@@ -39,8 +38,7 @@ export default {
   },
 
   components: {
-    Header,
-    File,
+     File,
   },
 };
 </script>
@@ -48,9 +46,7 @@ export default {
 
 <template>
   <main>
-    <header>
-      <Header />
-    </header>
+
 
     <br>
     <File />

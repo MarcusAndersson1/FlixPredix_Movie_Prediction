@@ -117,7 +117,7 @@
     {
       name: 'Analytics',
       description: 'Get a better understanding of the dataset.',
-      href: '#',
+      href: '/analytics',
       icon: ChartBarIcon,
     },
     {
