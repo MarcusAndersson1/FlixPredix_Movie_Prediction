@@ -6,9 +6,10 @@
             <v-col align-h="center">
                 <div id="titles">
                     <div id="titlecontent">
-                        <p class="cred mx-auto" >FlixPredix</p>
+                        <h1 class="cred">FlixPredix</h1>
 						<br>
                         <span class="mx-auto"> Thank you for using FlixPredix, special thanks to our Team:
+                            <br>
                             <br>
                             Carl Andreasson
                             <br>
@@ -37,6 +38,7 @@
 .cred {
     font-family: "StWs";
     font-size: 100px;
+    text-align: center;
 }
 
 #titles {
