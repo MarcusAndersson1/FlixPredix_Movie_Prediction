@@ -1,6 +1,6 @@
 <template>
 <v-hover v-slot:default="{ isHovering, props }">
-    <v-card class="mx-auto" id="bud" max-width="450" max-height="100" v-bind="props" :color="isHovering ? '#C22020' : undefined">
+    <v-card class="mx-auto" id="bud" max-width="450" max-height="115" v-bind="props" :color="isHovering ? '#C22020' : undefined">
         <br>
         <v-row class="mb-6" justify="space-between">
             <v-col class="text-center">
@@ -8,7 +8,7 @@
                 <span class="text-h5 font-weight-light mx-auto" v-text="budget"></span>
                 <span class="subheading font-weight-light mx-auto mr-">$</span>
 
-                <v-slider v-model="budget" :color="color" track-color="white" min="1000" max="4000000000" :step="1000">
+                <v-slider v-model="budget" :color="color" track-color="white" min="1000" max="400000000" :step="1000">
                     <template v-slot:prepend>
                         <v-btn size="small" variant="text" icon="mdi-minus" :color="color" @click="decrement"></v-btn>
                     </template>

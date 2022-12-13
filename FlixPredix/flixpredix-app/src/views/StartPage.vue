@@ -1,36 +1,51 @@
 <template>
     <body class="frontpage">
       <br>
-      
-    <v-container>
-
       <h1 class="name mx-auto">FLIXPREDIX</h1>
-
+    <v-container>
       <v-row>
         <v-col></v-col>
         <v-col></v-col>
         <v-col class="pauseRound">
-          <v-btn size= "150" :color="color" theme="dark" icon elevation="15" @click="toggle">               
-            <v-icon size="150" :icon="isPlaying ? 'mdi-pause' : 'mdi-pause'" color="#831212"></v-icon>             
+          <v-btn size= "110" :color="color" theme="dark" icon elevation="15" @click="toggle">               
+            <v-icon size="110" :icon="isPlaying ? 'mdi-pause' : 'mdi-pause'" color="#831212"></v-icon>             
           </v-btn>
         </v-col>
         <v-col class="playRound">
-            <v-btn size= "210" :color="color" theme="dark" icon elevation="15" @click="toggle" href="/home">               
-              <v-icon size="210" :icon="isPlaying ? 'mdi-pause' : 'mdi-play'" color="#831212"></v-icon>             
+            <v-btn size= "150" :color="color" theme="dark" icon elevation="15" @click="toggle" href="/home">               
+              <v-icon size="150" :icon="isPlaying ? 'mdi-pause' : 'mdi-play'" color="#831212"></v-icon>             
             </v-btn>
           </v-col>
         <v-col class="stopRound">
-            <v-btn size= "150" :color="color" theme="dark" icon elevation="15" @click="toggle">               
-              <v-icon size="150" :icon="isPlaying ? 'mdi-pause' : 'mdi-stop'" color="#831212"></v-icon>             
+            <v-btn size= "110" :color="color" theme="dark" icon elevation="15" @click="toggle" href="/credits">               
+              <v-icon size="110" :icon="isPlaying ? 'mdi-pause' : 'mdi-stop'" color="#831212"></v-icon>             
             </v-btn>
         </v-col>
         <v-col></v-col>
         <v-col></v-col>
-      </v-row>
-      
+      </v-row> 
     </v-container>
-
-      <div class="HELP"></div>
+    <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
     </body>
 </template>
 
@@ -39,7 +54,7 @@
   <script>
 
 
-
+/*<div class="HELP"></div>*/
   /*
       v-bind:style="{ 'background-image': 'url(' + require('@/assets/flixpredix_frontpage_with_spotlight.png') + hover + ')' }"
       v.bind:style="{'background-image': 'url(' + require('./link/to/image.png') + ')'}"
@@ -80,8 +95,8 @@
     margin-top: 0px;
   }
 .name {
-     font-family: "aliens_and_cows";
-     font-size: 150px;
+     font-family: "SWs";
+     font-size: 100px;
      margin-top: 50px;
      margin-bottom: 0px;
 

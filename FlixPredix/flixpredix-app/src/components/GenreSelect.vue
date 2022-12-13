@@ -1,9 +1,8 @@
 <template>
 <v-hover v-slot:default="{ isHovering, props }">
-    <v-card class="mx-auto" id="gen" max-width="700" max-height="300" v-bind="props" :color="isHovering ? '#C22020' : undefined">
-        <v-card-title>GENRE</v-card-title>
+    <v-card class="mx-auto" id="gen" max-width="700" max-height="280" v-bind="props" :color="isHovering ? '#C22020' : undefined">
+        <v-card-title hide-details>GENRE</v-card-title>
         <v-card-text>
-            <v-container>
                 <v-row>
                     <v-col cols="4" sm="3" md="3">
                         <v-checkbox-group v-model="ex7" column>
@@ -34,7 +33,6 @@
                         </v-checkbox-group>
                     </v-col>
                 </v-row>
-            </v-container>
         </v-card-text>
     </v-card>
 </v-hover>

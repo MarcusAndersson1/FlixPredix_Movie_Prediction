@@ -28,14 +28,15 @@ export default {
     }),
     computed: {
         color() {
-            if (this.runtime < 60) return 'blue'
-            if (this.runtime < 90) return 'green'
-            if (this.runtime < 120) return 'yellow'
-            if (this.runtime < 150) return 'orande'
-            if (this.runtime < 180) return 'red'
-            if (this.runtime < 210) return 'red'
-            if (this.runtime < 240) return 'red'
-            if (this.runtime < 270) return 'red'
+            if (this.runtime < 30) return 'white'
+            if (this.runtime < 60) return 'pink'
+            if (this.runtime < 90) return 'purple'
+            if (this.runtime < 120) return 'indigo'
+            if (this.runtime < 150) return 'blue'
+            if (this.runtime < 180) return 'cyan'
+            if (this.runtime < 210) return 'green'
+            if (this.runtime < 240) return 'yellow'
+            if (this.runtime < 270) return 'orange'
             else return 'red'
         },
         animationDuration() {

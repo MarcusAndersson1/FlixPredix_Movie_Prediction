@@ -1,10 +1,4 @@
 <template>
-  <nav>
-    <router-link to="/frontPage">FrontPage</router-link> |
-    <router-link to="/home">Home</router-link> |
-    <router-link to="/about">About</router-link> |
-    
-  </nav>
   <router-view/>
 </template>
 
@@ -36,8 +30,58 @@ nav a.router-link-exact-active {
    url(./assets/fonts/aliens_and_cows_trial.ttf) format("truetype");
 }
 @font-face {
-  font-family: "StarWars";
+  font-family: "SW";
   src: local("STJEDISE"),
    url(./assets/fonts/STJEDISE.TTF) format("truetype");
+}
+@font-face {
+  font-family: "StW";
+  src: local("Galaxy"),
+   url(./assets/fonts/SF\ Distant\ Galaxy.ttf) format("truetype");
+}
+@font-face {
+  font-family: "StaW";
+  src: local("Alternate"),
+   url(./assets/fonts/SF\ Distant\ Galaxy\ Alternate.ttf) format("truetype");
+}
+@font-face {
+  font-family: "StarW";
+  src: local("Italic"),
+   url(./assets/fonts/SF\ Distant\ Galaxy\ Alternate\ Italic.ttf) format("truetype");
+}
+@font-face {
+  font-family: "StarWa";
+  src: local("AllOutline"),
+   url(./assets/fonts/SF\ Distant\ Galaxy\ AltOutline.ttf) format("truetype");
+}
+@font-face {
+  font-family: "StarWar";
+  src: local("AOItalic"),
+   url(./assets/fonts/SF\ Distant\ Galaxy\ AltOutline\ Italic.ttf) format("truetype");
+}
+@font-face {
+  font-family: "StarWars";
+  src: local("italic"),
+   url(./assets/fonts/SF\ Distant\ Galaxy\ Italic.ttf) format("truetype");
+}
+@font-face {
+  font-family: "SWs";
+  src: local("Outline"),
+   url(./assets/fonts/SF\ Distant\ Galaxy\ Outline.ttf) format("truetype");
+}
+@font-face {
+  font-family: "StWs";
+  src: local("OutlineItalic"),
+   url(./assets/fonts/SF\ Distant\ Galaxy\ Outline\ Italic.ttf) format("truetype");
+}
+@font-face {
+  font-family: "StaWs";
+  src: local("Symbols"),
+   url(./assets/fonts/SF\ Distant\ Galaxy\ Symbols.ttf) format("truetype");
+}
+@font-face {
+  font-family: "StaWas";
+  src: local("SymbolsItalic"),
+   url(./assets/fonts/SF\ Distant\ Galaxy\ Symbols\ Italic.ttf) format("truetype");
 }
 </style>
