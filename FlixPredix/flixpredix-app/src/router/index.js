@@ -15,7 +15,7 @@ const routes = [
     component: CredentialsPage
   },
   {
-    path: '/start',
+    path: '/',
     name: 'start',
     component: StartPage
   }

@@ -47,7 +47,9 @@ export default {
     },
     name: 'GenreSelect',
     props: {
-        msg: String
+        genres: {
+        type: String
+    }
     },
 }
 </script>

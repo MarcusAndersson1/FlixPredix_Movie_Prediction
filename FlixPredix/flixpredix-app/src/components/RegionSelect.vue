@@ -37,7 +37,9 @@ export default {
     },
     name: 'GenreSelect',
     props: {
-        msg: String
+        budgets: {
+        type: Number
+    }
     },
 }
 </script>

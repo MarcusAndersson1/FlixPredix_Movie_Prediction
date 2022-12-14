@@ -45,7 +45,9 @@ export default {
     },
     name: 'RunTimeSelect',
     props: {
-        msg: String
+        runtimes: {
+            type: Number
+        }
     },
 
     methods: {
@@ -79,6 +81,6 @@ export default {
 #run {
     color: white;
     background-color: #861515;
-    
+
 }
 </style>

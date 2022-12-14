@@ -44,7 +44,9 @@ export default {
     },
     name: 'BudgetSlide',
     props: {
-        msg: String
+        budgets: {
+            type: Number
+        }
     },
 
     methods: {
