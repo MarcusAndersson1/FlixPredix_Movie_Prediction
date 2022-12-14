@@ -9,7 +9,9 @@
                         <audio src="https://s.cdpn.io/1202/Star_Wars_original_opening_crawl_1977.mp3"></audio>
                         <h1 class="cred">FlixPredix</h1>
 						<br>
-                        <span class="mx-auto"> Thank you for using FlixPredix, special thanks to our Team:
+                        <span class="mx-auto"> Thank you for using FlixPredix and thank you for listening 
+                            <br>
+                            From all of us
                             <br>
                             <br>
                             Carl Skywalker
@@ -25,10 +27,8 @@
                             Mislav Calrissian
                             <br>
                             <br>
-                            Big Thanks to our colleagues in the SEM program as well as the teachers and TAs
-                            that has helped us in making this possible.
+                            to all of you a very merry christmas!
                             <br>
-                            Lastly we want to thank Gothenburg University.
                             <br>
                             <br>
                             <br>

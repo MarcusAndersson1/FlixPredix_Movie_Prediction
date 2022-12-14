@@ -5,24 +5,25 @@
     <v-container class="home">
         <v-row align-h="start">
             <v-col>
-                <BudgetSlide v-model="movieBudget" required></BudgetSlide>
+                <BudgetSlide required @emit-result="budgetresult"></BudgetSlide>
                 <br>
-                <RegionSelect v-model="movieRegion" required></RegionSelect>
+                <RegionSelect required @emit-result="regionresult"></RegionSelect>
             </v-col>
             <v-col>
-                <GenreSelect v-model="movieGenre" required></GenreSelect>
+                <GenreSelect  required @emit-result="genreresult"></GenreSelect>
                 <br>
-                <RunTimeSelect v-model="movieRuntime" required></RunTimeSelect>
+                <RunTimeSelect required @emit-result="runtimeresult"></RunTimeSelect>
+                <br>
+                <h1 v-if="predictedScore">Predicted score is: {{ predictedScore }}</h1>
             </v-col>
         </v-row>
         <v-row>
             <v-col>
-                <v-btn @click="submit"> Submit </v-btn>
+                <v-btn @click="submit" :color="isHovering ? '#C22020' : undefined" class="mx-auto" id="sub"> Submit </v-btn>
             </v-col>
             <v-col>
             </v-col>
         </v-row>
-        <h1 v-if="predictedScore">Predicted score is: {{ predictedScore }}</h1>
     </v-container>
 </body>
 </template>
@@ -60,16 +61,28 @@ export default {
     }),
     methods: {
         submit() {
-            axios.post('http://127.0.0.1:8080/predict', {
-                    movie_genre: this.movieGenre,
-                    movie_budget: this.movieBudget,
-                    movie_runtime: this.movieRuntime,
-                    movie_region: this.movieRegion
+            axios.post('http://127.0.0.1:8085/consumer/predict', {
+                    genres: this.movieGenre,
+                    budget: this.movieBudget,
+                    runtime: this.movieRuntime,
+                    regions: this.movieRegion
                 })
                 .then((response) => {
                     console.log(response)
-                    this.predictedScore = response.data.class
+                    this.predictedScore = response.data["score"].toFixed(2)
                 })
+        },
+        budgetresult(budget) {
+        this.movieBudget = budget;
+        },
+        genreresult(genre) {
+        this.movieGenre = genre;
+        },
+        runtimeresult(runtime) {
+        this.movieRuntime = runtime;
+        },
+        regionresult(region) {
+        this.movieRegion = region;
         },
         clear() {
             this.movieGenre = ''
@@ -82,6 +95,11 @@ export default {
 </script>
 
 <style>
+#sub {
+    color: white;
+    background-color: #861515;
+    
+}
 body {
     background-image: url('@/assets/flixpredix_gradient.png');
     background-repeat: no-repeat;

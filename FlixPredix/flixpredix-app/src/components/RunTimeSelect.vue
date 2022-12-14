@@ -49,13 +49,18 @@ export default {
             type: Number
         }
     },
+    mounted() {
+    this.$emit("emit-result",this.runtime)
+    },
 
     methods: {
         decrement() {
             this.runtime--
+            this.$emit("emit-result",this.runtime)
         },
         increment() {
             this.runtime++
+            this.$emit("emit-result",this.runtime)
         }
     },
 }
