@@ -48,13 +48,18 @@ export default {
             type: Number
         }
     },
+    mounted() {
+    this.$emit("emit-result",this.budget)
+    },
 
     methods: {
         decrement() {
             this.budget--
+            this.$emit("emit-result",this.budget)
         },
         increment() {
             this.budget++
+            this.$emit("emit-result",this.budget)
         }
     },
 }
