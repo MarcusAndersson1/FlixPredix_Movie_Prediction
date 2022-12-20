@@ -3,14 +3,16 @@ kind: Deployment
 metadata:
   name: flixpredix-server
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: flixpredix-server
+      app: flixpredix
+      service: server
   template:
     metadata:
       labels:
-        app: flixpredix-server
+        app: flixpredix
+        service: server
     spec:
       containers:
       - name: flixpredix-server

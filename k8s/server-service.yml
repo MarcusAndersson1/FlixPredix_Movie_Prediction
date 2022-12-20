@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: flixpredix-server-lb
+  name: flixpredix-server
 spec:
-  type: LoadBalancer
   selector:
-    app: flixpredix-server
+    app: flixpredix
+    service: server
   ports:
   - port: 80
     targetPort: 80
