@@ -9,16 +9,7 @@ function saveToDb(data) {
 
 export default {
   methods:{
-    async getDbRows(){
-  
-        const response = await axios.get('http://localhost:4000/get')
-        if (response.data){
-          console.log(response)
-        }else{
-          console.log('nothing')
-        };   
 
-    }
   },
   mounted() {
     const inputElement = document.getElementById("dropzone-file");
