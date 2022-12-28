@@ -4,15 +4,22 @@ import axios from "axios";
 
 export default {
   methods: {
-    async replaceModel(){},
-    async trainModel(){},
-    async validateModel(){},
+    async replaceModel() {},
+    async trainModel() {},
+    async validateModel() {},
   },
-  mounted() {
-    
-  },
+  mounted() {},
   components: {
     File,
+  },
+  data() {
+    return {
+      models: [
+        { message: "A", pct: "12" },
+        { message: "B", pct: "92" },
+        { message: "C", pct: "52" },
+      ],
+    };
   },
 };
 </script>
@@ -48,7 +55,7 @@ export default {
       class="p-6 max-w-lg mx-auto bg-purple-40 rounded-xl shadow-lg flex items-center space-x-4"
     >
       <!-- byt ut modell(ladda upp modell) -->
-      <br/>
+      <br />
       <div>
         <input
           type="file"
@@ -62,6 +69,42 @@ export default {
         Replace Model
       </button>
     </div>
+
+    <div
+      class="overflow-x-auto max-w-lg border-2 border-purple-500 rounded mx-auto bg-purple-50"
+    >
+      <table class="table w-full">
+        <!-- head -->
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Accuracy</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- row 1 -->
+          <tr
+            class="border border-purple-500 border-t-0 border-l-0 border-r-0"
+            v-for="model in models"
+            v-bind:key="model.message"
+          >
+            <th>
+              {{ model.message }}
+            </th>
+            <th>{{ model.pct }}%</th>
+            <th>
+              <button
+                @click="replaceModel()"
+                class="bg-transparent hover:bg-blue-500 text-black-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+              >
+                Use
+              </button>
+            </th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
     <br />
     <button
       class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded"
