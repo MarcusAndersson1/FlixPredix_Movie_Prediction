@@ -1,33 +1,27 @@
 <script>
-import {
-  Chart as ChartJS,
-  Title,
-  Tooltip,
-  Legend,
-  BarElement,
-  CategoryScale,
-  LinearScale
-} from 'chart.js'
-import { Bar } from 'vue-chartjs'
-import * as chartConfig from '../assets/BudgetGraph'
-
-ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
+import BarChart from '../components/FeaturesDisplay.vue'
+import AvrageVue from '../components/Average.vue';
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    Bar
+    BarChart,
+    AvrageVue
   },
-  data() {
-    return chartConfig
-  }
-}
-
-
+  methods: {
+    
+  },
+  // data() {
+  //   return chartConfig;
+  // },
+  mounted() {
+  },
+};
 </script>
 
 <template>
-    <div>
-        <Bar :data="data" :options="options" />
-    </div>
+  <div>
+    <AvrageVue></AvrageVue>
+    <!-- <BarChart /> -->
+  </div>
 </template>

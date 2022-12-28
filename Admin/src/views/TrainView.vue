@@ -2,39 +2,15 @@
 import File from "../components/FileUpload.vue";
 import axios from "axios";
 
-function saveToDb(data) {}
-
 export default {
   methods: {
-    async getDbRows() {
-      const response = await axios.get("http://localhost:4000/get");
-      if (response.data) {
-        console.log(response);
-      } else {
-        console.log("nothing");
-      }
-    },
     async replaceModel(){},
     async trainModel(){},
     async validateModel(){},
   },
   mounted() {
-    const inputElement = document.getElementById("dropzone-file");
-
-    let data;
-    function handleFiles() {
-      const reader = new FileReader();
-
-      reader.onload = () => {
-        saveToDb(reader.result);
-        console.log(reader.result.slice(0, 50));
-      };
-
-      reader.readAsBinaryString(this.files[0]);
-    }
-    inputElement.addEventListener("change", handleFiles, false);
+    
   },
-
   components: {
     File,
   },
@@ -94,7 +70,6 @@ export default {
     </button>
 
     <button
-      @click="getDbRows()"
       class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
     >
       Train Model
