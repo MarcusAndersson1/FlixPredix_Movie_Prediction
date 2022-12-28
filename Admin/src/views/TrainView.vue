@@ -3,15 +3,10 @@ import File from "../components/FileUpload.vue";
 import axios from "axios";
 
 export default {
-<<<<<<< HEAD
   methods: {
     async replaceModel(){},
     async trainModel(){},
     async validateModel(){},
-=======
-  methods:{
-
->>>>>>> 0b721c8dd7e3f37be5ff6022d5d4cea75a2880ad
   },
   mounted() {
     
