@@ -2,7 +2,11 @@ import os
 import json
 import joblib
 import numpy as np
+import pandas as pd
 from . import logger
+import sklearn
+import sqlite3
+
 
 __all__ = [
     'predict',
@@ -67,9 +71,44 @@ def predict(prediction_data: PredictionData):
     
     result = __model.predict(data)
     result = result.flatten()[0]
-
     return result
 
+def retrain(df):
+
+    X = df[['budget', 'runtime', 
+        'genres_action', 'genres_adventure','genres_animation',
+        'genres_comedy','genres_crime','genres_documentary',
+        'genres_drama','genres_family','genres_fantasy',
+        'genres_foreign','genres_history','genres_horror',
+        'genres_music','genres_mystery','genres_romance',
+        'genres_science_fiction','genres_thriller','genres_tv_movie',
+        'genres_war','genres_western','region_AF','region_AS',
+        'region_EU','region_NA','region_OC','region_SA','region_UK']].values
+    y = df['vote_average'].values.reshape(-1,1)
+
+    # copy training model
+    cloned_model = sklearn.base.clone(__model)
+
+    # partial fit on copy
+    cloned_model.partial_fit(X, y)
+
+    # compare partially fit with original / TESTING
+
+    # Score is a bit suboptimal
+    score_original = __model.score(X, y)
+    score_cloned = cloned_model.score(X, y)
+
+    if score_original > score_cloned:
+        print("Model A (previous) is more accurate")
+    else:
+        print("Model B (new) is more accurate")
+        __model = cloned_model
+        # save model in sqlite and set as active
+
+        con = sqlite3.connect("example.db")
+        
+
+    
 
 def load_model(version=-1):
     mreg = get_model_registry()
