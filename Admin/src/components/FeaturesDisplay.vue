@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <Bar v-if="loaded" :data="chartData" />
+    <Bar v-if="loaded" :data="chartData" :options="options" />
   </div>
 </template>
 
@@ -35,20 +35,45 @@ export default {
         labels: [],
         datasets: [
           {
-            label: 'Data One',
-            backgroundColor: '#f87979',
-            data: [40, 20, 12]
+            label: 'Genres',
+            backgroundColor: '#2596be',
+            data: []
           }
         ]
-      }
+      },
+    options:{
+      responsive: true,
+        plugins: {
+            title: {
+                display: false,
+                text: 'Chart.js'
+            }
+        },
+        scales: {
+            x: {
+                display: true
+            },
+            y: {
+                display: true
+            }
+        }
+    }
   }),
   async mounted() {
     this.loaded = false;
 
     try{
-      const response = await axios.get("http://localhost:8080/admin/getFeatures");
-      this.chartData.labels = Array.from(response.data)
-      console.log(response)
+      const response = await axios.get("http://localhost:8080/admin/getGenres");
+      let list = Array.from(response.data)
+
+      let half = Math.floor(list.length / 2)
+
+      let genres = list.slice(0, half);
+      let values = list.slice(half, list.length);
+
+      this.chartData.labels = genres
+      this.chartData.datasets[0].data = values
+
       this.loaded = true;
 
     }catch (e){

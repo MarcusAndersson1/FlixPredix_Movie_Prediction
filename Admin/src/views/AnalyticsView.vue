@@ -22,6 +22,6 @@ export default {
 <template>
   <div>
     <AvrageVue></AvrageVue>
-    <!-- <BarChart /> -->
+    <BarChart />
   </div>
 </template>
