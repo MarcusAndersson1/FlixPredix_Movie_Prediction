@@ -4,9 +4,19 @@ import axios from "axios";
 
 export default {
   methods: {
-    async replaceModel() {},
-    async trainModel() {},
-    async validateModel() {},
+    async replaceModel() {
+      let file = document.getElementById("joblibInput").files[0]
+      console.log(file)
+    },
+    async trainModel() {
+      let file = document.getElementById("csvInput").files[0]
+      console.log(file)
+    },
+    async validateModel() {
+      let file = document.getElementById("csvInput").files[0]
+      console.log(file)
+    },
+    selectModel(id){console.log(id)},
   },
   mounted() {},
   components: {
@@ -34,6 +44,8 @@ export default {
       <div>
         <input
           type="file"
+          id="csvInput"
+          accept=".csv"
           class="file-input file-input-bordered w-full max-w-xs"
         />
       </div>
@@ -58,7 +70,9 @@ export default {
       <br />
       <div>
         <input
+          id="joblibInput"
           type="file"
+          accept=".joblib"
           class="file-input file-input-bordered w-full max-w-xs"
         />
       </div>
@@ -87,6 +101,7 @@ export default {
             class="border border-purple-500 border-t-0 border-l-0 border-r-0"
             v-for="model in models"
             v-bind:key="model.message"
+            @click="selectModel(model.message)"
           >
             <th>
               {{ model.message }}
