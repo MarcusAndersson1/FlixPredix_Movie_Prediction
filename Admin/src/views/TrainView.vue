@@ -5,18 +5,20 @@ import axios from "axios";
 export default {
   methods: {
     async replaceModel() {
-      let file = document.getElementById("joblibInput").files[0]
-      console.log(file)
+      let file = document.getElementById("joblibInput").files[0];
+      console.log(file);
     },
     async trainModel() {
-      let file = document.getElementById("csvInput").files[0]
-      console.log(file)
+      let file = document.getElementById("csvInput").files[0];
+      console.log(file);
     },
     async validateModel() {
-      let file = document.getElementById("csvInput").files[0]
-      console.log(file)
+      let file = document.getElementById("csvInput").files[0];
+      console.log(file);
     },
-    selectModel(id){console.log(id)},
+    selectModel(id) {
+      console.log(id);
+    },
   },
   mounted() {},
   components: {
@@ -121,17 +123,6 @@ export default {
     </div>
 
     <br />
-    <button
-      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded"
-    >
-      Felix
-    </button>
-
-    <button
-      class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
-    >
-      Train Model
-    </button>
   </main>
 </template>
 
