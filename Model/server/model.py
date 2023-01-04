@@ -6,7 +6,7 @@ import pandas as pd
 from . import logger
 import sklearn
 import sqlite3
-
+from relationalSQLite import *
 
 __all__ = [
     'predict',
@@ -103,9 +103,8 @@ def retrain(df):
     else:
         print("Model B (new) is more accurate")
         __model = cloned_model
-        # save model in sqlite and set as active
+        
 
-        con = sqlite3.connect("example.db")
         
 
     

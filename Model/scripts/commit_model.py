@@ -1,6 +1,10 @@
 import os
 import json
 import time
+import sys
+from server.relationalSQLite import *
+
+
 
 MODEL_REGISTRY_LOCATION = "models/models.json"
 MODEL_LOCATION = "models/tmp/model.joblib"
@@ -28,6 +32,10 @@ with open(MODEL_REGISTRY_LOCATION) as model_registry:
         'version': model_version,
         'createdAt': model_created_at
     }
+
+   
+    # SQlite:
+    insertModel(model_name, model_version, model_created_at, False)
 
     available_models.append(model_entry)
 
