@@ -12,12 +12,12 @@
           </v-btn>
         </v-col>
         <v-col class="playRound">
-            <v-btn size= "150" :color="color" theme="dark" icon elevation="15" @click="toggle" href="/home">               
+            <v-btn size= "150" :color="color" theme="dark" icon elevation="15" @click="toggle" href="/#/home">               
               <v-icon size="150" :icon="isPlaying ? 'mdi-pause' : 'mdi-play'" color="#831212"></v-icon>             
             </v-btn>
           </v-col>
         <v-col class="stopRound">
-            <v-btn size= "110" :color="color" theme="dark" icon elevation="15" @click="toggle" href="/credits">               
+            <v-btn size= "110" :color="color" theme="dark" icon elevation="15" @click="toggle" href="/#/credits">               
               <v-icon size="110" :icon="isPlaying ? 'mdi-pause' : 'mdi-stop'" color="#831212"></v-icon>             
             </v-btn>
         </v-col>

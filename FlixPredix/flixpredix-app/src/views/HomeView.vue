@@ -5,22 +5,23 @@
     <v-container class="home">
         <v-row align-h="start">
             <v-col>
-                <BudgetSlide />
+                <BudgetSlide required @emit-result="budgetresult"></BudgetSlide>
                 <br>
-                <RegionSelect />
+                <RegionSelect required @emit-result="regionresult"></RegionSelect>
             </v-col>
             <v-col>
-                <GenreSelect />
+                <GenreSelect  required @emit-result="genreresult"></GenreSelect>
                 <br>
-                <RunTimeSelect />
+                <RunTimeSelect required @emit-result="runtimeresult"></RunTimeSelect>
+                <br>
+                <h1 v-if="predictedScore">Predicted score is: {{ predictedScore }}</h1>
             </v-col>
         </v-row>
         <v-row>
             <v-col>
-                <SuccessAlert />
+                <v-btn @click="submit" :color="isHovering ? '#C22020' : undefined" class="mx-auto" id="sub"> Submit </v-btn>
             </v-col>
             <v-col>
-                <ErrorAlert />
             </v-col>
         </v-row>
     </v-container>
@@ -28,14 +29,17 @@
 </template>
 
 <script>
- /*<div class="HELP"></div>*/
+var audio = new Audio('https://s.cdpn.io/1202/Star_Wars_original_opening_crawl_1977.mp3');
+    audio.pause();
+/*<div class="HELP"></div>*/
 // @ is an alias to /src
 import BudgetSlide from '@/components/BudgetSlide.vue'
 import GenreSelect from '@/components/GenreSelect.vue'
 import RegionSelect from '@/components/RegionSelect.vue'
 import RunTimeSelect from '@/components/RunTimeSelect.vue'
-import ErrorAlert from '@/components/ErrorAlert.vue'
-import SuccessAlert from '@/components/SuccessAlert.vue'
+//import ErrorAlert from '@/components/ErrorAlert.vue'
+//import SuccessAlert from '@/components/SuccessAlert.vue'
+import axios from 'axios'
 
 export default {
     name: 'HomeView',
@@ -44,14 +48,58 @@ export default {
         GenreSelect,
         RegionSelect,
         RunTimeSelect,
-        ErrorAlert,
-        SuccessAlert,
+        //ErrorAlert,
+        //SuccessAlert,
 
     },
+    data: () => ({
+        movieGenre: '',
+        movieBudget: null,
+        movieRuntime: null,
+        movieRegion: '',
+        predictedScore: null
+    }),
+    methods: {
+        submit() {
+            axios.post('http://127.0.0.1:8080/consumer/predict', {
+                    genres: this.movieGenre,
+                    budget: this.movieBudget,
+                    runtime: this.movieRuntime,
+                    regions: this.movieRegion
+                })
+                .then((response) => {
+                    console.log(response)
+                    this.predictedScore = response.data["score"].toFixed(2)
+                })
+        },
+        budgetresult(budget) {
+        this.movieBudget = budget;
+        },
+        genreresult(genre) {
+        this.movieGenre = genre;
+        },
+        runtimeresult(runtime) {
+        this.movieRuntime = runtime;
+        },
+        regionresult(region) {
+        this.movieRegion = region;
+        },
+        clear() {
+            this.movieGenre = ''
+            this.movieBudget = null
+            this.movieRuntime = null
+            this.movieRegion = ''
+        }
+    }
 }
 </script>
-  
+
 <style>
+#sub {
+    color: white;
+    background-color: #861515;
+    
+}
 body {
     background-image: url('@/assets/flixpredix_gradient.png');
     background-repeat: no-repeat;

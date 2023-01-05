@@ -33,11 +33,15 @@ RUN poetry install --no-dev --no-root
 FROM base as production
 
 ENV FLIXPREDIX_HOME="/flixpredix" \
-    FLIXPREDIX_MREG="/flixpredix/models"
+    FLIXPREDIX_MREG="/flixpredix/models" \
+    FLIXPREDIX_DATA="/flixpredix/data"
+
 
 COPY --from=builder $PYSETUP_PATH $PYSETUP_PATH
 COPY ./server $FLIXPREDIX_HOME/server/
 COPY ./models $FLIXPREDIX_MREG
+COPY ./data $FLIXPREDIX_DATA
+
 
 WORKDIR $FLIXPREDIX_HOME
 

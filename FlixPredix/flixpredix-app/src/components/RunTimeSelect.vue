@@ -45,15 +45,22 @@ export default {
     },
     name: 'RunTimeSelect',
     props: {
-        msg: String
+        runtimes: {
+            type: Number
+        }
+    },
+    mounted() {
+    this.$emit("emit-result",this.runtime)
     },
 
     methods: {
         decrement() {
             this.runtime--
+            this.$emit("emit-result",this.runtime)
         },
         increment() {
             this.runtime++
+            this.$emit("emit-result",this.runtime)
         }
     },
 }
@@ -79,6 +86,6 @@ export default {
 #run {
     color: white;
     background-color: #861515;
-    
+
 }
 </style>
