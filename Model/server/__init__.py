@@ -1,9 +1,9 @@
-from . import model
+from . import model_registry
 from .router import admin, consumer
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-if model.get_model_registry_location() is None:
+if model_registry.get_model_registry_location() is None:
     exit(-1)
 
 app = FastAPI()

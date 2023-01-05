@@ -61,7 +61,7 @@ export default {
     }),
     methods: {
         submit() {
-            axios.post('http://127.0.0.1:8085/consumer/predict', {
+            axios.post('http://127.0.0.1:8080/consumer/predict', {
                     genres: this.movieGenre,
                     budget: this.movieBudget,
                     runtime: this.movieRuntime,

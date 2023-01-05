@@ -1,8 +1,6 @@
-import os
-import json
-import joblib
 import numpy as np
-from . import logger
+import sklearn
+from . import model_registry
 
 __all__ = [
     'predict',
@@ -65,42 +63,42 @@ def predict(prediction_data: PredictionData):
 
     data = np.array([data_tmp])
     
-    result = __model.predict(data)
+    result = model_registry.load_active_model().predict(data)
     result = result.flatten()[0]
-
     return result
 
+def retrain(df):
 
-def load_model(version=-1):
-    mreg = get_model_registry()
-    available_models = mreg['available']
+    X = df[['budget', 'runtime', 
+        'genres_action', 'genres_adventure','genres_animation',
+        'genres_comedy','genres_crime','genres_documentary',
+        'genres_drama','genres_family','genres_fantasy',
+        'genres_foreign','genres_history','genres_horror',
+        'genres_music','genres_mystery','genres_romance',
+        'genres_science_fiction','genres_thriller','genres_tv_movie',
+        'genres_war','genres_western','region_AF','region_AS',
+        'region_EU','region_NA','region_OC','region_SA','region_UK']].values
+    y = df['vote_average'].values.reshape(-1,1)
 
-    model_entry = max(available_models, key=lambda model: model['version']) if version == -1 \
-        else next((model for model in available_models if model['version'] == version), None)
+    model = model_registry.load_active_model()
 
-    if model_entry is None:
-        logger.get_logger().error("Model with version '{}' not found".format(version))
-        raise Exception("Unable to load model with version '{}'".format(version))
+    # copy training model
+    cloned_model = sklearn.base.clone(model)
 
-    return joblib.load(get_model_registry_location() + '/{}.joblib'.format(model_entry['name']))
+    # partial fit on copy
+    cloned_model.partial_fit(X, y)
 
-    
-def get_model_registry():
-    mreg_location = get_model_registry_location()
+    # compare partially fit with original / TESTING
 
-    if mreg_location is None:
-        raise Exception('Unable to load model registry')
+    # Score is a bit suboptimal
+    score_original = model.score(X, y)
+    score_cloned = cloned_model.score(X, y)
 
-    with open(mreg_location + '/models.json') as mreg:
-        return json.load(mreg)
-
-
-def get_model_registry_location():
-    if 'FLIXPREDIX_MREG' not in os.environ:
-        logger.get_logger().error("Environment variable 'FLIXPREDIX_MREG' not set")
-        return None
-
-    return os.environ['FLIXPREDIX_MREG']
+    if score_original > score_cloned:
+        print("Model A (previous) is more accurate")
+    else:
+        print("Model B (new) is more accurate")
+        model = cloned_model ## TODO
 
 
 def __map_to_ohe(data, reference):
@@ -116,5 +114,3 @@ def __map_to_ohe(data, reference):
         mapping.append(1 if matched else 0)
 
     return mapping
-
-__model = load_model()
