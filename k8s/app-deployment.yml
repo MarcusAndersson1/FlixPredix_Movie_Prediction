@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flixpredix-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flixpredix
+      service: app
+  template:
+    metadata:
+      labels:
+        app: flixpredix
+        service: app
+    spec:
+      containers:
+      - name: flixpredix-app
+        image: europe-west4-docker.pkg.dev/flixpredix/flixpredix/flixpredix-app:latest
+        ports:
+        - containerPort: 8080

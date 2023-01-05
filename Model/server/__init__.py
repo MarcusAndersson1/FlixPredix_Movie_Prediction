@@ -8,6 +8,10 @@ if model_registry.get_model_registry_location() is None:
 
 app = FastAPI()
 
+@app.get('/', status_code=200)
+def ping():
+    return {}
+
 app.include_router(admin.get_router())
 app.include_router(consumer.get_router())
 

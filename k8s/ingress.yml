@@ -1,0 +1,13 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: flixpredix-ingress
+  namespace: "default"
+spec:
+  defaultBackend:
+    service:
+      name: flixpredix-server
+      port:
+        number: 80
+status:
+  loadBalancer: {}
