@@ -2,6 +2,8 @@ import numpy as np
 import pandas as pd
 import json
 import logging
+import csv_to_sqlite 
+
 
 logging.basicConfig(level=logging.INFO) # switch to logging.DEBUG for more info
 
@@ -176,6 +178,11 @@ df.to_csv('data/normalized.csv')
 
 logger.info("Saved transformations to '/data/normalized.csv'")
 
+logger.info("Saving transformations to '/data/normalized.db'")
+
+csv_to_sqlite.write_csv(["data/normalized.csv"], "data/normalized.db", csv_to_sqlite.CsvOptions(typing_style="full", encoding="windows-1250"))
+
+logger.info("Saved transformations to '/data/normalized.db'")
 
 # Split spoken languages into separate columns (MIGHT NOT BE USED)
 

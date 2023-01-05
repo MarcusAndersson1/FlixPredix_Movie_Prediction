@@ -1,49 +1,60 @@
 import os
-import json
 import time
-import sys
-from server.relationalSQLite import *
+import sqlite3
 
 
-
-MODEL_REGISTRY_LOCATION = "models/models.json"
+MODEL_REGISTRY_LOCATION = "models/models.db"
 MODEL_LOCATION = "models/tmp/model.joblib"
 
-if not os.path.exists(MODEL_LOCATION):
-    exit(-1)
 
-registy_content = None
+def insert_model(name, version, created_at):
+    try:
+        connection = sqlite3.connect(MODEL_REGISTRY_LOCATION)
+        cursor = connection.cursor()
 
-with open(MODEL_REGISTRY_LOCATION) as model_registry:
-    registry_content = json.load(model_registry)
+        query = """INSERT INTO models
+                            (name, version, created_at) VALUES (?, ?, ?)"""
 
-    available_models: list = registry_content['available']
+        columns = (name, version, created_at)
 
-    if len(available_models) == 0:
-        model_version = 1
-    else:
-        model_version = max(list(map(lambda x: x['version'], available_models))) + 1
+        cursor.execute(query, columns)
+        connection.commit()
 
-    model_name = 'model-v{}'.format(model_version)
-    model_created_at = int(time.time())
+        cursor.close()
 
-    model_entry = {
-        'name': model_name,
-        'version': model_version,
-        'createdAt': model_created_at
-    }
+    except sqlite3.Error as error:
+        print('Error occured while inserting model', error)
 
-   
-    # SQlite:
-    insertModel(model_name, model_version, model_created_at, False)
+    finally:
+        if connection:
+            connection.close()
 
-    available_models.append(model_entry)
 
-    os.rename(MODEL_LOCATION, "models/{}.joblib".format(model_name))
-    
+def get_new_version():
+    try:
+        connection = sqlite3.connect(MODEL_REGISTRY_LOCATION)
+        cursor = connection.cursor()
 
-if registry_content is None:
-    exit(-1)
+        query = 'SELECT MAX(version) FROM models LIMIT 1'
+        cursor.execute(query)
 
-with open(MODEL_REGISTRY_LOCATION, 'w') as model_registry:
-    model_registry.write(json.dumps(registry_content, indent=4))
+        version = cursor.fetchone()
+
+        if version[0] is None:
+            return 1
+
+        return version[0] + 1
+    except sqlite3.Error as error:
+        print('Error occured while fetching latest version', error)
+    finally:
+        if connection:
+            connection.close()
+
+
+model_version = get_new_version()
+model_name = 'model-v{}'.format(model_version)
+model_created_at = int(time.time())
+
+insert_model(model_name, model_version, model_created_at)
+
+os.rename(MODEL_LOCATION, "models/{}.joblib".format(model_name))
