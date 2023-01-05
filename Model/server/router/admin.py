@@ -2,6 +2,7 @@ from .. import model_registry
 from typing import List
 from fastapi import APIRouter, HTTPException, UploadFile
 from pydantic import BaseModel
+import csv
 
 __all__ = [
     'get_router'
