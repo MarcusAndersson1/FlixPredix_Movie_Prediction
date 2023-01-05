@@ -12,7 +12,7 @@
           <PopoverGroup as="nav" class="hidden space-x-10 md:flex">
   
             <a href="/" class="text-base font-medium text-gray-500 hover:text-gray-900">Home</a>
-            <a href="/analytics" class="text-base font-medium text-gray-500 hover:text-gray-900">Analytics</a>
+            <a href="/#/analytics" class="text-base font-medium text-gray-500 hover:text-gray-900">Analytics</a>
 
           </PopoverGroup>
           <div class="hidden items-center justify-end md:flex md:flex-1 lg:w-0">
