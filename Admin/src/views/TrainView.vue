@@ -32,7 +32,7 @@ export default {
           file,
         })
         .then((response) => {
-          console.log(response);
+          alert("Verification completed MSE score:" + response.data.mse + "\n R2 score:" + response.data.r2 );
         });
     },
     selectModel(model) {
