@@ -158,31 +158,31 @@ def remove_nulls(df):
 
     return df
 
+if __name__ == "__main__":
+    # Create dataframe from CSV file
+    df = pd.read_csv('data/tmdb_5000_movies.csv', sep=',')
 
-# Create dataframe from CSV file
-df = pd.read_csv('data/tmdb_5000_movies.csv', sep=',')
-
-df = drop_unused_columns(df)
-df = transform_genres(df)
-df = transform_production_countries(df)
-df = normalize_popularity(df)
-df = normalize_revenue(df)
-df = normalize_budget(df)
-df = remove_nulls(df)
+    df = drop_unused_columns(df)
+    df = transform_genres(df)
+    df = transform_production_countries(df)
+    df = normalize_popularity(df)
+    df = normalize_revenue(df)
+    df = normalize_budget(df)
+    df = remove_nulls(df)
 
 
-logger.debug("Saving transformations to '/data/normalized.csv'")
+    logger.debug("Saving transformations to '/data/normalized.csv'")
 
-# Create new modified CSV file for training usage
-df.to_csv('data/normalized.csv')
+    # Create new modified CSV file for training usage
+    df.to_csv('data/normalized.csv')
 
-logger.info("Saved transformations to '/data/normalized.csv'")
+    logger.info("Saved transformations to '/data/normalized.csv'")
 
-logger.info("Saving transformations to '/data/normalized.db'")
+    logger.info("Saving transformations to '/data/normalized.db'")
 
-csv_to_sqlite.write_csv(["data/normalized.csv"], "data/normalized.db", csv_to_sqlite.CsvOptions(typing_style="full", encoding="windows-1250"))
+    csv_to_sqlite.write_csv(["data/normalized.csv"], "data/normalized.db", csv_to_sqlite.CsvOptions(typing_style="full", encoding="windows-1250"))
 
-logger.info("Saved transformations to '/data/normalized.db'")
+    logger.info("Saved transformations to '/data/normalized.db'")
 
 # Split spoken languages into separate columns (MIGHT NOT BE USED)
 

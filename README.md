@@ -39,6 +39,14 @@ docker build -t flixpredix/server .
 docker run -p 8080:80 flixpredix/server 
 ```
 
+##### Running Tests
+
+```
+pip install numpy pandas pytest csv_to_sqlite
+cd Model/scripts/
+pytest test.py -v
+```
+
 ## How It Works
 [ Technical description shall go here. ]
 
