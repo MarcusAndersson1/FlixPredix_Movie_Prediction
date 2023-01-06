@@ -8,7 +8,7 @@ export default {
       let file = document.getElementById("joblibInput").files[0];
       console.log(file);
       axios
-        .post(process.env.VUE_APP_SERVER_ENDPOINT + "/admin/upload", {
+        .post(import.meta.env.VITE_APP_SERVER_ENDPOINT + "/admin/upload", {
           file,
         })
         .then((response) => {
@@ -18,7 +18,7 @@ export default {
     async trainModel() {
       let file = document.getElementById("csvInput").files[0];
       axios
-        .post(process.env.VUE_APP_SERVER_ENDPOINT + "/admin/train", {
+        .post(import.meta.env.VITE_APP_SERVER_ENDPOINT + "/admin/train", {
           file,
         })
         .then((response) => {
@@ -28,7 +28,7 @@ export default {
     async validateModel() {
       let file = document.getElementById("csvInput").files[0];
       axios
-        .post(process.env.VUE_APP_SERVER_ENDPOINT + "/admin/validate", {
+        .post(import.meta.env.VITE_APP_SERVER_ENDPOINT + "/admin/validate", {
           file,
         })
         .then((response) => {
@@ -38,7 +38,7 @@ export default {
     selectModel(id) {
       console.log(id);
       axios
-        .post(process.env.VUE_APP_SERVER_ENDPOINT + "/admin/activate", {
+        .post(import.meta.env.VITE_APP_SERVER_ENDPOINT + "/admin/activate", {
           version: id,
         })
         .then((response) => {
@@ -48,7 +48,7 @@ export default {
   },
   mounted() {
     axios
-      .get(process.env.VUE_APP_SERVER_ENDPOINT + "/admin/models", {})
+      .get(import.meta.env.VUE_APP_SERVER_ENDPOINT + "/admin/models", {})
       .then((response) => {
         console.log(response);
       });
