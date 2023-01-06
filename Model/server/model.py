@@ -1,6 +1,10 @@
+import io
 import numpy as np
+import pandas as pd
 import sklearn
+import sklearn.metrics
 from . import model_registry
+
 
 __all__ = [
     'predict',
@@ -51,6 +55,12 @@ class PredictionData:
         self.regions = regions
 
 
+class PerformanceMetrics:
+    def __init__(self, mse, r2):
+        self.mse = mse
+        self.r2 = r2
+
+
 def predict(prediction_data: PredictionData):
     genres = __map_to_ohe(list(map(lambda x: x.value, prediction_data.genres)), __genres)
     regions = __map_to_ohe(list(map(lambda x: x.value, prediction_data.regions)), __regions)
@@ -99,6 +109,31 @@ def retrain(df):
     else:
         print("Model B (new) is more accurate")
         model = cloned_model ## TODO
+
+
+def get_performance_metrics(dataset):
+    content = io.StringIO(dataset.read().decode("utf-8"))
+
+    df = pd.read_csv(content, sep=',')
+    
+    X = df[['budget', 'runtime', 
+        'genres_action', 'genres_adventure','genres_animation',
+        'genres_comedy','genres_crime','genres_documentary',
+        'genres_drama','genres_family','genres_fantasy',
+        'genres_foreign','genres_history','genres_horror',
+        'genres_music','genres_mystery','genres_romance',
+        'genres_science_fiction','genres_thriller','genres_tv_movie',
+        'genres_war','genres_western','region_AF','region_AS',
+        'region_EU','region_NA','region_OC','region_SA','region_UK']].values
+    y = df['vote_average'].values.reshape(-1,1)
+    
+    model = model_registry.load_active_model()
+    prediction = model.predict(X)
+
+    mse = sklearn.metrics.mean_squared_error(y, prediction)
+    r2 = model.score(X, y)
+
+    return PerformanceMetrics(mse, r2)
 
 
 def __map_to_ohe(data, reference):
