@@ -9,7 +9,7 @@
                         <audio src="https://s.cdpn.io/1202/Star_Wars_original_opening_crawl_1977.mp3"></audio>
                         <h1 class="cred">FlixPredix</h1>
 						<br>
-                        <span class="mx-auto"> Thank you for using FlixPredix and thank you for listening 
+                        <span class="mx-auto"> Thank you for using FlixPredix 
                             <br>
                             From all of us
                             <br>
@@ -27,7 +27,7 @@
                             Mislav Calrissian
                             <br>
                             <br>
-                            to all of you a very merry christmas!
+                            Thanks!
                             <br>
                             <br>
                             <br>
