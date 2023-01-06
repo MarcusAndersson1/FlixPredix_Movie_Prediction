@@ -7,20 +7,52 @@ export default {
     async replaceModel() {
       let file = document.getElementById("joblibInput").files[0];
       console.log(file);
+      axios
+        .post(process.env.VUE_APP_SERVER_ENDPOINT + "/admin/upload", {
+          file,
+        })
+        .then((response) => {
+          console.log(response);
+        });
     },
     async trainModel() {
       let file = document.getElementById("csvInput").files[0];
-      console.log(file);
+      axios
+        .post(process.env.VUE_APP_SERVER_ENDPOINT + "/admin/train", {
+          file,
+        })
+        .then((response) => {
+          console.log(response);
+        });
     },
     async validateModel() {
       let file = document.getElementById("csvInput").files[0];
-      console.log(file);
+      axios
+        .post(process.env.VUE_APP_SERVER_ENDPOINT + "/admin/validate", {
+          file,
+        })
+        .then((response) => {
+          console.log(response);
+        });
     },
     selectModel(id) {
       console.log(id);
+      axios
+        .post(process.env.VUE_APP_SERVER_ENDPOINT + "/admin/activate", {
+          version: id,
+        })
+        .then((response) => {
+          console.log(response);
+        });
     },
   },
-  mounted() {},
+  mounted() {
+    axios
+      .get(process.env.VUE_APP_SERVER_ENDPOINT + "/admin/models", {})
+      .then((response) => {
+        console.log(response);
+      });
+  },
   components: {
     File,
   },
