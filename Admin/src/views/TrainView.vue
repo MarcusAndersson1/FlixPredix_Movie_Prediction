@@ -47,8 +47,9 @@ export default {
     },
   },
   mounted() {
+    console.log(import.meta.env.VITE_APP_SERVER_ENDPOINT + "/admin/models")
     axios
-      .get(import.meta.env.VUE_APP_SERVER_ENDPOINT + "/admin/models", {})
+      .get(import.meta.env.VITE_APP_SERVER_ENDPOINT + "/admin/models", {})
       .then((response) => {
         console.log(response);
         this.models = response.data.models;
