@@ -3,7 +3,6 @@ import os
 import sqlite3
 import joblib
 import time
-import uuid
 
 
 class Model:
@@ -160,8 +159,8 @@ def persist_model(model):
         query = '''INSERT INTO models
                             (name, version, created_at) VALUES (?, ?, ?)'''
 
-        name = 'model-{}'.format(str(uuid.uuid4()))
         version = get_new_model_version()
+        name = 'model-v{}'.format(version)
         created_at = str(time.time())
 
         cursor.execute(query, (name, version, created_at))
