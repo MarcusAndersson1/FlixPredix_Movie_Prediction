@@ -35,11 +35,11 @@ export default {
           console.log(response);
         });
     },
-    selectModel(id) {
-      console.log(id);
+    selectModel(model) {
+      console.log(model);
       axios
         .post(import.meta.env.VITE_APP_SERVER_ENDPOINT + "/admin/activate", {
-          version: id,
+          version: model.version,
         })
         .then((response) => {
           console.log(response);
@@ -51,6 +51,7 @@ export default {
       .get(import.meta.env.VUE_APP_SERVER_ENDPOINT + "/admin/models", {})
       .then((response) => {
         console.log(response);
+        this.models = response.data.models;
       });
   },
   components: {
@@ -58,11 +59,7 @@ export default {
   },
   data() {
     return {
-      models: [
-        { message: "A", pct: "12" },
-        { message: "B", pct: "92" },
-        { message: "C", pct: "52" },
-      ],
+      models: [],
     };
   },
 };
@@ -125,8 +122,8 @@ export default {
         <!-- head -->
         <thead>
           <tr>
+            <th>ID</th>
             <th>Name</th>
-            <th>Accuracy</th>
           </tr>
         </thead>
         <tbody>
@@ -134,13 +131,13 @@ export default {
           <tr
             class="border border-purple-500 border-t-0 border-l-0 border-r-0"
             v-for="model in models"
-            v-bind:key="model.message"
-            @click="selectModel(model.message)"
+            v-bind:key="model.version"
+            @click="selectModel(model)"
           >
             <th>
-              {{ model.message }}
+              {{ model.version }}
             </th>
-            <th>{{ model.pct }}%</th>
+            <th>{{ model.name }}</th>
             <th>
               <button
                 @click="replaceModel()"
