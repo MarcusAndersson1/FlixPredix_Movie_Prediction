@@ -6,10 +6,14 @@ export default {
   methods: {
     async replaceModel() {
       let file = document.getElementById("joblibInput").files[0];
+      let formData = new FormData()
+      formData.append('file', file)
       console.log(file);
       axios
-        .post(import.meta.env.VITE_APP_SERVER_ENDPOINT + "/admin/upload", {
-          file,
+        .post(import.meta.env.VITE_APP_SERVER_ENDPOINT + "/admin/upload", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          }
         })
         .then((response) => {
           console.log(response);
@@ -17,9 +21,13 @@ export default {
     },
     async trainModel() {
       let file = document.getElementById("csvInput").files[0];
+      let formData = new FormData()
+      formData.append('file', file)
       axios
-        .post(import.meta.env.VITE_APP_SERVER_ENDPOINT + "/admin/train", {
-          file,
+        .post(import.meta.env.VITE_APP_SERVER_ENDPOINT + "/admin/train", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          }
         })
         .then((response) => {
           console.log(response);
@@ -27,12 +35,16 @@ export default {
     },
     async validateModel() {
       let file = document.getElementById("csvInput").files[0];
+      let formData = new FormData()
+      formData.append('file', file)
       axios
-        .post(import.meta.env.VITE_APP_SERVER_ENDPOINT + "/admin/validate", {
-          file,
+        .post(import.meta.env.VITE_APP_SERVER_ENDPOINT + "/admin/validate", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          }
         })
         .then((response) => {
-          alert("Verification completed MSE score:" + response.data.mse + "\n R2 score:" + response.data.r2 );
+          alert("Verification completed\nMSE score: " + response.data.mse + "\nR2 score: " + response.data.r2 );
         });
     },
     selectModel(model) {
